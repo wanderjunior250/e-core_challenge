@@ -26,6 +26,7 @@ class LoginPage(PageObject):
         return True
 
     def do_login(self, user):
+        """This method will do login to the application"""
         MASS = BuiltIn().get_variable_value("${MASS}")
         self.enter_username(MASS['USERS'][user]['user'])
         self.enter_password(MASS['USERS'][user]['password'])
@@ -48,4 +49,4 @@ class LoginPage(PageObject):
     def check_login_error_message(self):
         """Checks that the user was not able to log in using invalid credentials"""
         alert = self.selib.get_text(self.locator.alert_wrong_user_or_pass)
-        BuiltIn().should_be_equal(alert, "Wrong username or password")
+        BuiltIn().should_contain(alert, "Wrong username or password")

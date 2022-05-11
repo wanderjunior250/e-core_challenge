@@ -27,6 +27,12 @@ There's a simple way of running all the tests scenarios:
 $ robot --outputdir reports --pythonpath resources/pages tests 
 ```
 
+## Continuous Improvement
+Some small points can improve the quality and maturity of this automation:
+- Add a webdriver manager to handle different browser execution and different versions of the webdriver as it will use the right one according to the browser version on the machine;
+- All command lines can be encapsulated using python invoke task manager, in order to facilitate CI/CD and have different configurations in a single place for the executions;
+
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 

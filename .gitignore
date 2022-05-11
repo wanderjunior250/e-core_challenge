@@ -160,4 +160,5 @@ cython_debug/
 #.idea/
 
 # reports folder with automated results
-/reports
+# normally I remove reports to make project clean, but, I'm keeping it in order to keep visible
+# /reports

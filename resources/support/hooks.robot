@@ -15,4 +15,4 @@
 # if needed
 
 | After Each
-  the user do logout
+# if needed (e.g. taking screenshots)

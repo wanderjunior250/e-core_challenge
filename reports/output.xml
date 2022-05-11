@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.9.6 on win32)" generated="20220511 19:23:29.499" rpa="false" schemaversion="3">
+<suite id="s1" name="Tests" source="C:\Users\wande\OneDrive\Documentos\Automation\e-core_challenge\tests">
+<suite id="s1-s1" name="Invoice" source="C:\Users\wande\OneDrive\Documentos\Automation\e-core_challenge\tests\invoice.robot">
+<kw name="Before" library="hooks" type="SETUP">
+<kw name="Mass" library="config">
+<var>${mass}</var>
+<msg timestamp="20220511 19:23:29.742" level="INFO">${mass} = {'USERS': {'VALID_USER_1': {'user': 'demouser', 'password': 'abc123'}, 'INVALID_USER_1': {'user': 'Demouser', 'password': 'abc123'}, 'INVALID_USER_2': {'user': 'demouser_', 'password': 'xyz'}, 'INVALI...</msg>
+<status status="PASS" starttime="20220511 19:23:29.739" endtime="20220511 19:23:29.742"/>
+</kw>
+<kw name="Env" library="config">
+<var>${env}</var>
+<msg timestamp="20220511 19:23:29.742" level="INFO">${env} = {'App': {'url': ' https://automation-sandbox.herokuapp.com'}}</msg>
+<status status="PASS" starttime="20220511 19:23:29.742" endtime="20220511 19:23:29.742"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${MASS}</arg>
+<arg>${mass}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220511 19:23:29.743" level="INFO">${MASS} = {'USERS': {'VALID_USER_1': {'user': 'demouser', 'password': 'abc123'}, 'INVALID_USER_1': {'user': 'Demouser', 'password': 'abc123'}, 'INVALID_USER_2': {'user': 'demouser_', 'password': 'xyz'}, 'INVALI...</msg>
+<status status="PASS" starttime="20220511 19:23:29.743" endtime="20220511 19:23:29.743"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${ENV}</arg>
+<arg>${env}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220511 19:23:29.743" level="INFO">${ENV} = {'App': {'url': ' https://automation-sandbox.herokuapp.com'}}</msg>
+<status status="PASS" starttime="20220511 19:23:29.743" endtime="20220511 19:23:29.743"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220511 19:23:29.744" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220511 19:23:29.743" endtime="20220511 19:23:30.839"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220511 19:23:30.839" endtime="20220511 19:23:30.960"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ENV['App']['url']}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220511 19:23:30.961" level="INFO">Opening url ' https://automation-sandbox.herokuapp.com'</msg>
+<status status="PASS" starttime="20220511 19:23:30.960" endtime="20220511 19:23:34.772"/>
+</kw>
+<status status="PASS" starttime="20220511 19:23:29.738" endtime="20220511 19:23:34.772"/>
+</kw>
+<test id="s1-s1-t1" name="Scenario Outline: TC003 - Validate invoice detail" line="9">
+<kw name="Background: Valid Login" type="SETUP">
+<arg>VALID_USER_1</arg>
+<kw name="Given the user is on the login_page" library="login_kw">
+<kw name="Go To Page" library="PageObjectLibrary">
+<arg>LoginPage</arg>
+<tag>page-object</tag>
+<tag>selenium</tag>
+<doc>Go to the url for the given page object.</doc>
+<msg timestamp="20220511 19:23:34.788" level="INFO">Opening url 'https://automation-sandbox.herokuapp.com'</msg>
+<status status="PASS" starttime="20220511 19:23:34.774" endtime="20220511 19:23:41.980"/>
+</kw>
+<status status="PASS" starttime="20220511 19:23:34.773" endtime="20220511 19:23:41.980"/>
+</kw>
+<kw name="When the user ${user} tries to login" library="login_kw" sourcename="the user ${x} tries to login">
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${user}</arg>
+<arg>${x}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220511 19:23:41.982" level="INFO">${user} = VALID_USER_1</msg>
+<status status="PASS" starttime="20220511 19:23:41.981" endtime="20220511 19:23:41.982"/>
+</kw>
+<kw name="Do Login" library="LoginPage">
+<arg>${user}</arg>
+<doc>This method will do login to the application</doc>
+<msg timestamp="20220511 19:23:41.982" level="INFO">Typing text 'demouser' into text field 'css=div.mt-3:nth-child(1) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:23:42.057" level="INFO">Typing text 'abc123' into text field 'css=div.row:nth-child(2) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:23:42.131" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<status status="PASS" starttime="20220511 19:23:41.982" endtime="20220511 19:23:52.544"/>
+</kw>
+<status status="PASS" starttime="20220511 19:23:41.981" endtime="20220511 19:23:52.545"/>
+</kw>
+<kw name="Then the user should be logged in" library="login_kw">
+<kw name="The Current Page Should Be" library="PageObjectLibrary">
+<arg>HomePage</arg>
+<doc>Fails if the name of the current page is not the given page name</doc>
+<status status="PASS" starttime="20220511 19:23:52.545" endtime="20220511 19:23:52.550"/>
+</kw>
+<status status="PASS" starttime="20220511 19:23:52.545" endtime="20220511 19:23:52.550"/>
+</kw>
+<status status="PASS" starttime="20220511 19:23:34.773" endtime="20220511 19:23:52.550"/>
+</kw>
+<kw name="Check Invoice Details">
+<arg>INVOICE_1</arg>
+<kw name="When the user click invoice details for the first item" library="home_kw">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>3x</arg>
+<arg>10 sec</arg>
+<arg>Click First Invoice</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click First Invoice" library="HomePage">
+<msg timestamp="20220511 19:23:52.574" level="INFO">Opening url 'https://automation-sandbox.herokuapp.com/invoice/0'</msg>
+<status status="PASS" starttime="20220511 19:23:52.551" endtime="20220511 19:23:58.787"/>
+</kw>
+<status status="PASS" starttime="20220511 19:23:52.551" endtime="20220511 19:23:58.787"/>
+</kw>
+<status status="PASS" starttime="20220511 19:23:52.551" endtime="20220511 19:23:58.787"/>
+</kw>
+<kw name="Then the application should open invoice details screen" library="invoice_kw">
+<kw name="The Current Page Should Be" library="PageObjectLibrary">
+<arg>InvoiceDetailsPage</arg>
+<doc>Fails if the name of the current page is not the given page name</doc>
+<status status="PASS" starttime="20220511 19:23:58.788" endtime="20220511 19:23:58.797"/>
+</kw>
+<status status="PASS" starttime="20220511 19:23:58.787" endtime="20220511 19:23:58.797"/>
+</kw>
+<kw name="And the information presented should match ${invoice}" library="invoice_kw" sourcename="And the information presented should match ${invoice}">
+<kw name="Validate Invoice Details" library="InvoiceDetailsPage">
+<arg>${MASS['INVOICES']['${invoice}']}</arg>
+<doc>This method validates the invoice details according to the provided mass as a dictionary</doc>
+<msg timestamp="20220511 19:23:58.799" level="INFO">Verifying element 'css=section &gt; div &gt; h4' contains exact text 'Rendezvous Hotel'.</msg>
+<msg timestamp="20220511 19:23:58.831" level="INFO">Element 'css=div &gt; ul &gt; li:nth-child(1)' contains text '14/01/2018'.</msg>
+<msg timestamp="20220511 19:23:58.844" level="INFO">Element 'css=div &gt; ul &gt; li:nth-child(2)' contains text '15/01/2018'.</msg>
+<msg timestamp="20220511 19:23:58.857" level="INFO">Element 'css=div &gt; h6' contains text '110'.</msg>
+<msg timestamp="20220511 19:23:58.857" level="INFO">Verifying element 'css=table:nth-child(8) &gt; tbody &gt; tr:nth-child(1) &gt; td:nth-child(2)' contains exact text '0875'.</msg>
+<msg timestamp="20220511 19:23:58.883" level="INFO">Element 'css=section &gt; div &gt; div' contains text 'JOHNY SMITH'.</msg>
+<msg timestamp="20220511 19:23:58.891" level="INFO">Element 'css=section &gt; div &gt; div' contains text 'R2, AVENUE DU MAROC'.</msg>
+<msg timestamp="20220511 19:23:58.898" level="INFO">Element 'css=section &gt; div &gt; div' contains text '123456'.</msg>
+<msg timestamp="20220511 19:23:58.898" level="INFO">Verifying element 'css=table:nth-child(8) &gt; tbody &gt; tr:nth-child(2) &gt; td:nth-child(2)' contains exact text 'Superior Double'.</msg>
+<msg timestamp="20220511 19:23:58.911" level="INFO">Verifying element 'css=table:nth-child(8) &gt; tbody &gt; tr:nth-child(5) &gt; td:nth-child(2)' contains exact text '14/01/2018'.</msg>
+<msg timestamp="20220511 19:23:58.924" level="INFO">Verifying element 'css=table:nth-child(8) &gt; tbody &gt; tr:nth-child(6) &gt; td:nth-child(2)' contains exact text '15/01/2018'.</msg>
+<msg timestamp="20220511 19:23:58.937" level="INFO">Verifying element 'css=table:nth-child(8) &gt; tbody &gt; tr:nth-child(3) &gt; td:nth-child(2)' contains exact text '1'.</msg>
+<msg timestamp="20220511 19:23:58.950" level="INFO">Verifying element 'css=table:nth-child(8) &gt; tbody &gt; tr:nth-child(4) &gt; td:nth-child(2)' contains exact text '$150'.</msg>
+<msg timestamp="20220511 19:23:58.963" level="INFO">Verifying element 'css=table:nth-child(12) &gt; tbody &gt; tr &gt; td:nth-child(1)' contains exact text 'USD $20.90'.</msg>
+<msg timestamp="20220511 19:23:58.976" level="INFO">Verifying element 'css=table:nth-child(12) &gt; tbody &gt; tr &gt; td:nth-child(2)' contains exact text 'USD $19.00'.</msg>
+<msg timestamp="20220511 19:23:58.989" level="FAIL">The text of element 'css=table:nth-child(12) &gt; tbody &gt; tr &gt; td:nth-child(2)' should have been 'USD $19.00' but it was 'USD $19'.</msg>
+<status status="FAIL" starttime="20220511 19:23:58.798" endtime="20220511 19:23:58.990"/>
+</kw>
+<status status="FAIL" starttime="20220511 19:23:58.797" endtime="20220511 19:23:58.990"/>
+</kw>
+<status status="FAIL" starttime="20220511 19:23:52.551" endtime="20220511 19:23:58.991"/>
+</kw>
+<status status="FAIL" starttime="20220511 19:23:34.772" endtime="20220511 19:23:58.991">The text of element 'css=table:nth-child(12) &gt; tbody &gt; tr &gt; td:nth-child(2)' should have been 'USD $19.00' but it was 'USD $19'.</status>
+</test>
+<kw name="After" library="hooks" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220511 19:23:58.993" endtime="20220511 19:24:01.213"/>
+</kw>
+<status status="PASS" starttime="20220511 19:23:58.993" endtime="20220511 19:24:01.213"/>
+</kw>
+<status status="FAIL" starttime="20220511 19:23:29.518" endtime="20220511 19:24:01.213"/>
+</suite>
+<suite id="s1-s2" name="Login" source="C:\Users\wande\OneDrive\Documentos\Automation\e-core_challenge\tests\login.robot">
+<kw name="Before" library="hooks" type="SETUP">
+<kw name="Mass" library="config">
+<var>${mass}</var>
+<msg timestamp="20220511 19:24:01.225" level="INFO">${mass} = {'USERS': {'VALID_USER_1': {'user': 'demouser', 'password': 'abc123'}, 'INVALID_USER_1': {'user': 'Demouser', 'password': 'abc123'}, 'INVALID_USER_2': {'user': 'demouser_', 'password': 'xyz'}, 'INVALI...</msg>
+<status status="PASS" starttime="20220511 19:24:01.222" endtime="20220511 19:24:01.225"/>
+</kw>
+<kw name="Env" library="config">
+<var>${env}</var>
+<msg timestamp="20220511 19:24:01.226" level="INFO">${env} = {'App': {'url': ' https://automation-sandbox.herokuapp.com'}}</msg>
+<status status="PASS" starttime="20220511 19:24:01.225" endtime="20220511 19:24:01.226"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${MASS}</arg>
+<arg>${mass}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220511 19:24:01.226" level="INFO">${MASS} = {'USERS': {'VALID_USER_1': {'user': 'demouser', 'password': 'abc123'}, 'INVALID_USER_1': {'user': 'Demouser', 'password': 'abc123'}, 'INVALID_USER_2': {'user': 'demouser_', 'password': 'xyz'}, 'INVALI...</msg>
+<status status="PASS" starttime="20220511 19:24:01.226" endtime="20220511 19:24:01.226"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${ENV}</arg>
+<arg>${env}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220511 19:24:01.227" level="INFO">${ENV} = {'App': {'url': ' https://automation-sandbox.herokuapp.com'}}</msg>
+<status status="PASS" starttime="20220511 19:24:01.226" endtime="20220511 19:24:01.227"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220511 19:24:01.227" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220511 19:24:01.227" endtime="20220511 19:24:02.279"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220511 19:24:02.279" endtime="20220511 19:24:02.413"/>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ENV['App']['url']}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220511 19:24:02.413" level="INFO">Opening url ' https://automation-sandbox.herokuapp.com'</msg>
+<status status="PASS" starttime="20220511 19:24:02.413" endtime="20220511 19:24:08.187"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:01.222" endtime="20220511 19:24:08.187"/>
+</kw>
+<test id="s1-s2-t1" name="Scenario: TC001 - Login (Positive)" line="9">
+<kw name="Background: Login" type="SETUP">
+<kw name="Given the user is on the login_page" library="login_kw">
+<kw name="Go To Page" library="PageObjectLibrary">
+<arg>LoginPage</arg>
+<tag>page-object</tag>
+<tag>selenium</tag>
+<doc>Go to the url for the given page object.</doc>
+<msg timestamp="20220511 19:24:08.201" level="INFO">Opening url 'https://automation-sandbox.herokuapp.com'</msg>
+<status status="PASS" starttime="20220511 19:24:08.189" endtime="20220511 19:24:18.399"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:08.189" endtime="20220511 19:24:18.399"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:08.188" endtime="20220511 19:24:18.399"/>
+</kw>
+<kw name="Valid Login">
+<arg>VALID_USER_1</arg>
+<kw name="When the user ${user} tries to login" library="login_kw" sourcename="the user ${x} tries to login">
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${user}</arg>
+<arg>${x}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220511 19:24:18.401" level="INFO">${user} = VALID_USER_1</msg>
+<status status="PASS" starttime="20220511 19:24:18.400" endtime="20220511 19:24:18.401"/>
+</kw>
+<kw name="Do Login" library="LoginPage">
+<arg>${user}</arg>
+<doc>This method will do login to the application</doc>
+<msg timestamp="20220511 19:24:18.401" level="INFO">Typing text 'demouser' into text field 'css=div.mt-3:nth-child(1) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:24:18.471" level="INFO">Typing text 'abc123' into text field 'css=div.row:nth-child(2) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:24:18.538" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<status status="PASS" starttime="20220511 19:24:18.401" endtime="20220511 19:24:22.952"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:18.400" endtime="20220511 19:24:22.952"/>
+</kw>
+<kw name="Then the user should be logged in" library="login_kw">
+<kw name="The Current Page Should Be" library="PageObjectLibrary">
+<arg>HomePage</arg>
+<doc>Fails if the name of the current page is not the given page name</doc>
+<status status="PASS" starttime="20220511 19:24:22.953" endtime="20220511 19:24:22.956"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:22.953" endtime="20220511 19:24:22.957"/>
+</kw>
+<kw name="And the user do logout" library="login_kw">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${ENV['App']['url']}/logout</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220511 19:24:22.957" level="INFO">Opening url ' https://automation-sandbox.herokuapp.com/logout'</msg>
+<status status="PASS" starttime="20220511 19:24:22.957" endtime="20220511 19:24:27.309"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:22.957" endtime="20220511 19:24:27.310"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:18.400" endtime="20220511 19:24:27.310"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:08.188" endtime="20220511 19:24:27.310"/>
+</test>
+<test id="s1-s2-t2" name="Scenario Outline: TC002 - Login (Negative)" line="13">
+<kw name="Background: Login" type="SETUP">
+<kw name="Given the user is on the login_page" library="login_kw">
+<kw name="Go To Page" library="PageObjectLibrary">
+<arg>LoginPage</arg>
+<tag>page-object</tag>
+<tag>selenium</tag>
+<doc>Go to the url for the given page object.</doc>
+<msg timestamp="20220511 19:24:27.321" level="INFO">Opening url 'https://automation-sandbox.herokuapp.com'</msg>
+<status status="PASS" starttime="20220511 19:24:27.313" endtime="20220511 19:24:33.526"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:27.313" endtime="20220511 19:24:33.526"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:27.313" endtime="20220511 19:24:33.526"/>
+</kw>
+<kw name="Invalid Login">
+<arg>INVALID_USER_1</arg>
+<kw name="When the user ${user} tries to login" library="login_kw" sourcename="the user ${x} tries to login">
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${user}</arg>
+<arg>${x}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220511 19:24:33.528" level="INFO">${user} = INVALID_USER_1</msg>
+<status status="PASS" starttime="20220511 19:24:33.527" endtime="20220511 19:24:33.528"/>
+</kw>
+<kw name="Do Login" library="LoginPage">
+<arg>${user}</arg>
+<doc>This method will do login to the application</doc>
+<msg timestamp="20220511 19:24:33.528" level="INFO">Typing text 'Demouser' into text field 'css=div.mt-3:nth-child(1) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:24:33.594" level="INFO">Typing text 'abc123' into text field 'css=div.row:nth-child(2) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:24:33.653" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<status status="PASS" starttime="20220511 19:24:33.528" endtime="20220511 19:24:43.070"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:33.527" endtime="20220511 19:24:43.070"/>
+</kw>
+<kw name="Then the user should not be logged in" library="login_kw">
+<kw name="The Current Page Should Be" library="PageObjectLibrary">
+<arg>LoginPage</arg>
+<doc>Fails if the name of the current page is not the given page name</doc>
+<status status="PASS" starttime="20220511 19:24:43.070" endtime="20220511 19:24:43.075"/>
+</kw>
+<kw name="Check Login Error Message" library="LoginPage">
+<doc>Checks that the user was not able to log in using invalid credentials</doc>
+<status status="PASS" starttime="20220511 19:24:43.075" endtime="20220511 19:24:43.093"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:43.070" endtime="20220511 19:24:43.093"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:33.527" endtime="20220511 19:24:43.093"/>
+</kw>
+<kw name="Invalid Login">
+<arg>INVALID_USER_2</arg>
+<kw name="When the user ${user} tries to login" library="login_kw" sourcename="the user ${x} tries to login">
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${user}</arg>
+<arg>${x}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220511 19:24:43.094" level="INFO">${user} = INVALID_USER_2</msg>
+<status status="PASS" starttime="20220511 19:24:43.094" endtime="20220511 19:24:43.094"/>
+</kw>
+<kw name="Do Login" library="LoginPage">
+<arg>${user}</arg>
+<doc>This method will do login to the application</doc>
+<msg timestamp="20220511 19:24:43.095" level="INFO">Typing text 'demouser_' into text field 'css=div.mt-3:nth-child(1) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:24:43.145" level="INFO">Typing text 'xyz' into text field 'css=div.row:nth-child(2) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:24:43.224" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<status status="PASS" starttime="20220511 19:24:43.094" endtime="20220511 19:24:46.620"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:43.094" endtime="20220511 19:24:46.620"/>
+</kw>
+<kw name="Then the user should not be logged in" library="login_kw">
+<kw name="The Current Page Should Be" library="PageObjectLibrary">
+<arg>LoginPage</arg>
+<doc>Fails if the name of the current page is not the given page name</doc>
+<status status="PASS" starttime="20220511 19:24:46.620" endtime="20220511 19:24:46.624"/>
+</kw>
+<kw name="Check Login Error Message" library="LoginPage">
+<doc>Checks that the user was not able to log in using invalid credentials</doc>
+<status status="PASS" starttime="20220511 19:24:46.624" endtime="20220511 19:24:46.641"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:46.620" endtime="20220511 19:24:46.641"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:43.093" endtime="20220511 19:24:46.641"/>
+</kw>
+<kw name="Invalid Login">
+<arg>INVALID_USER_3</arg>
+<kw name="When the user ${user} tries to login" library="login_kw" sourcename="the user ${x} tries to login">
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${user}</arg>
+<arg>${x}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220511 19:24:46.642" level="INFO">${user} = INVALID_USER_3</msg>
+<status status="PASS" starttime="20220511 19:24:46.642" endtime="20220511 19:24:46.642"/>
+</kw>
+<kw name="Do Login" library="LoginPage">
+<arg>${user}</arg>
+<doc>This method will do login to the application</doc>
+<msg timestamp="20220511 19:24:46.643" level="INFO">Typing text 'demouser' into text field 'css=div.mt-3:nth-child(1) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:24:46.686" level="INFO">Typing text 'nananana' into text field 'css=div.row:nth-child(2) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:24:46.752" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<status status="PASS" starttime="20220511 19:24:46.643" endtime="20220511 19:24:55.167"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:46.642" endtime="20220511 19:24:55.167"/>
+</kw>
+<kw name="Then the user should not be logged in" library="login_kw">
+<kw name="The Current Page Should Be" library="PageObjectLibrary">
+<arg>LoginPage</arg>
+<doc>Fails if the name of the current page is not the given page name</doc>
+<status status="PASS" starttime="20220511 19:24:55.167" endtime="20220511 19:24:55.170"/>
+</kw>
+<kw name="Check Login Error Message" library="LoginPage">
+<doc>Checks that the user was not able to log in using invalid credentials</doc>
+<status status="PASS" starttime="20220511 19:24:55.170" endtime="20220511 19:24:55.187"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:55.167" endtime="20220511 19:24:55.187"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:46.641" endtime="20220511 19:24:55.187"/>
+</kw>
+<kw name="Invalid Login">
+<arg>INVALID_USER_4</arg>
+<kw name="When the user ${user} tries to login" library="login_kw" sourcename="the user ${x} tries to login">
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${user}</arg>
+<arg>${x}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220511 19:24:55.188" level="INFO">${user} = INVALID_USER_4</msg>
+<status status="PASS" starttime="20220511 19:24:55.188" endtime="20220511 19:24:55.188"/>
+</kw>
+<kw name="Do Login" library="LoginPage">
+<arg>${user}</arg>
+<doc>This method will do login to the application</doc>
+<msg timestamp="20220511 19:24:55.189" level="INFO">Typing text '' into text field 'css=div.mt-3:nth-child(1) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:24:55.236" level="INFO">Typing text 'abc123' into text field 'css=div.row:nth-child(2) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:24:55.313" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<status status="PASS" starttime="20220511 19:24:55.188" endtime="20220511 19:25:05.728"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:55.188" endtime="20220511 19:25:05.729"/>
+</kw>
+<kw name="Then the user should not be logged in" library="login_kw">
+<kw name="The Current Page Should Be" library="PageObjectLibrary">
+<arg>LoginPage</arg>
+<doc>Fails if the name of the current page is not the given page name</doc>
+<status status="PASS" starttime="20220511 19:25:05.729" endtime="20220511 19:25:05.733"/>
+</kw>
+<kw name="Check Login Error Message" library="LoginPage">
+<doc>Checks that the user was not able to log in using invalid credentials</doc>
+<status status="PASS" starttime="20220511 19:25:05.733" endtime="20220511 19:25:05.749"/>
+</kw>
+<status status="PASS" starttime="20220511 19:25:05.729" endtime="20220511 19:25:05.749"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:55.187" endtime="20220511 19:25:05.749"/>
+</kw>
+<kw name="Invalid Login">
+<arg>INVALID_USER_5</arg>
+<kw name="When the user ${user} tries to login" library="login_kw" sourcename="the user ${x} tries to login">
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${user}</arg>
+<arg>${x}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220511 19:25:05.750" level="INFO">${user} = INVALID_USER_5</msg>
+<status status="PASS" starttime="20220511 19:25:05.750" endtime="20220511 19:25:05.750"/>
+</kw>
+<kw name="Do Login" library="LoginPage">
+<arg>${user}</arg>
+<doc>This method will do login to the application</doc>
+<msg timestamp="20220511 19:25:05.751" level="INFO">Typing text 'demouser' into text field 'css=div.mt-3:nth-child(1) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:25:05.796" level="INFO">Typing text '' into text field 'css=div.row:nth-child(2) &gt; div:nth-child(2) &gt; input:nth-child(1)'.</msg>
+<msg timestamp="20220511 19:25:05.862" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<status status="PASS" starttime="20220511 19:25:05.750" endtime="20220511 19:25:10.268"/>
+</kw>
+<status status="PASS" starttime="20220511 19:25:05.750" endtime="20220511 19:25:10.268"/>
+</kw>
+<kw name="Then the user should not be logged in" library="login_kw">
+<kw name="The Current Page Should Be" library="PageObjectLibrary">
+<arg>LoginPage</arg>
+<doc>Fails if the name of the current page is not the given page name</doc>
+<status status="PASS" starttime="20220511 19:25:10.268" endtime="20220511 19:25:10.271"/>
+</kw>
+<kw name="Check Login Error Message" library="LoginPage">
+<doc>Checks that the user was not able to log in using invalid credentials</doc>
+<status status="PASS" starttime="20220511 19:25:10.271" endtime="20220511 19:25:10.287"/>
+</kw>
+<status status="PASS" starttime="20220511 19:25:10.268" endtime="20220511 19:25:10.287"/>
+</kw>
+<status status="PASS" starttime="20220511 19:25:05.749" endtime="20220511 19:25:10.287"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:27.311" endtime="20220511 19:25:10.288"/>
+</test>
+<kw name="After" library="hooks" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220511 19:25:10.290" endtime="20220511 19:25:12.410"/>
+</kw>
+<status status="PASS" starttime="20220511 19:25:10.290" endtime="20220511 19:25:12.410"/>
+</kw>
+<status status="PASS" starttime="20220511 19:24:01.216" endtime="20220511 19:25:12.410"/>
+</suite>
+<status status="FAIL" starttime="20220511 19:23:29.501" endtime="20220511 19:25:12.413"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="1" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Invoice">Tests.Invoice</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s2" name="Login">Tests.Login</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

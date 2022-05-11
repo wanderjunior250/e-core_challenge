@@ -27,3 +27,22 @@ USERS:
   INVALID_USER_5:
     user: 'demouser'
     password: ''
+INVOICES:
+  INVOICE_1:
+    hotel_name: 'Rendezvous Hotel'
+    invoice_date: '14/01/2018'
+    due_date: '15/01/2018'
+    invoice_number: '110'
+    booking_code: '0875'
+    customer_details: 
+      name: 'JOHNY SMITH'
+      address: 'R2, AVENUE DU MAROC'
+      code: '123456'
+    room: 'Superior Double'
+    checkin: '14/01/2018'
+    checkout: '15/01/2018'
+    total_stay_count: '1'
+    total_stay_amount: '$150'
+    deposit_now: 'USD $20.90'
+    tax_vat: 'USD $19.00'
+    total_amount: 'USD $209.00'

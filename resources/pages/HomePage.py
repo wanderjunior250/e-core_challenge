@@ -3,7 +3,9 @@ from PageObjectLibrary import PageObject
 class HomePage(PageObject):
     PAGE_URL = "/account"
 
-    _locators = {}
+    _locators = {
+        "first_invoie_details_button": "xpath=/html/body/section/div/div[2]/div[5]/a"
+    }
 
     def _is_current_page(self):
         # this site uses the same title for many pages,
@@ -17,3 +19,8 @@ class HomePage(PageObject):
                       self.PAGE_URL + " but it did not"
             raise Exception(message)
         return True
+
+    def click_first_invoice(self):
+        with self._wait_for_page_refresh():
+            link = self.selib.get_element_attribute(self.locator.first_invoie_details_button, "href")
+            self.selib.go_to(link)
