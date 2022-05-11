@@ -1,21 +1,36 @@
-# **Resolução desafio QA**
+# Robot GUI Automation E-Core Challenge
 
-## Intalação
+This project has the goal of being an example of an automated testing structure using Robotframework in Python, also has
+implementation of the design pattern page objects for the e-core challenge.
 
- - Pré-requisitos: ruby 2.4
- - gem install bundler
- - bundler install
+The project uses BDD to write test scenarios and it's structure was constructed to be similar with Cucumber implementation.
 
+## Requirements
 
-## Ambiente de execução
+You'll need to install the following:
+- Python 2.7.x
+- Selenium webdriver (e.g. chromedriver) on the Python instalation path (/bin) 
 
- - Caso desejar é possível subir um servidor selenium local com um node chrome e um firefox
- - para isso é necessário docker e docker-compose instalados
+## Installation
 
- - na raíz do projeto executar: $ docker-compose up 
- - No arquivo ./config/config.yml alterar remote para true
+Run the the following command line in the project root path:
 
-## Execução
+```python
+$ pip install -r requirements.txt 
+```
 
- - Utilizar comandos cucumber para executar o projeto
- - tags: @task_1, @task_2, @api, @app, @get
+## Running the project
+
+There's a simple way of running all the tests scenarios:
+
+```python
+$ robot --outputdir reports --pythonpath resources/pages tests 
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
