@@ -1,0 +1,29 @@
+USERS:
+  VALID_USER_1:
+    user: 'demouser'
+    password: 'abc123'
+
+  # invalid user
+  INVALID_USER_1:
+    user: 'Demouser'
+    password: 'abc123'
+
+  # not registered user
+  INVALID_USER_2:
+    user: 'demouser_'
+    password: 'xyz'
+
+  # invalid pass
+  INVALID_USER_3:
+    user: 'demouser'
+    password: 'nananana'
+
+  # empty user
+  INVALID_USER_4:
+    user: ''
+    password: 'abc123'
+
+  # empty password
+  INVALID_USER_5:
+    user: 'demouser'
+    password: ''
