@@ -9,7 +9,7 @@ The project uses BDD to write test scenarios and it's structure was constructed 
 
 You'll need to install the following:
 - Python 2.7.x
-- Selenium webdriver (e.g. chromedriver) on the Python instalation path (/bin) 
+- Selenium webdriver (e.g. chromedriver) on the Python instalation path
 
 ## Installation
 
